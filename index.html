@@ -97,7 +97,7 @@
       </div>
       <div class="home-hero__socials">
         <div class="home-hero__social">
-          <a href="#" class="home-hero__social-icon-link">
+          <a href="www.linkedin.com/in/jason-harris-827374291" class="home-hero__social-icon-link">
             <img
               src="./assets/png/linkedin-ico.png"
               alt="icon"
@@ -173,15 +173,12 @@
                 fixing security issues, managing SIEM systems, and providing IT support.
               </p>
               <p class="about__content-details-para">
-                I'm a bit of a digital product junky. Over the years, I've used
-                hundreds of web and mobile apps in different industries and
-                verticals. Feel free to
+               Feel free to
                 <strong>contact</strong> me here.
               </p>
             </div>
-            <a href="./#contact" class="btn btn--med btn--theme dynamicBgClr"
-              >Contact</a
-            >
+            <a href="mailto:jasonharris005@gmail.com" class="btn btn--med btn--theme dynamicBgClr"
+              >Contact</a>
           </div>
           <div class="about__content-skills">
             <h3 class="about__content-title">My Skills</h3>
@@ -234,8 +231,7 @@
                 href="./project-1.html"
                 class="btn btn--med btn--theme dynamicBgClr"
                 target="_blank"
-                >Case Study</a
-              >
+                >Case Study</a>
             </div>
           </div>
           <div class="projects__row">
@@ -258,8 +254,7 @@
                 href="./project-2.html"
                 class="btn btn--med btn--theme dynamicBgClr"
                 target="_blank"
-                >Case Study</a
-              >
+                >Case Study</a>
             </div>
           </div>
           <div class="projects__row">
@@ -282,8 +277,7 @@
                 href="./project-3.html"
                 class="btn btn--med btn--theme dynamicBgClr"
                 target="_blank"
-                >Case Study</a
-              >
+                >Case Study</a>
             </div>
           </div>
         </div>
@@ -299,7 +293,7 @@
           </span>
         </h2>
         <div class="contact__form-container">
-          <form action="#" class="contact__form">
+          <form action="javascript:sendEmail()" class="contact__form" onsubmit="sendEmail(event)">
             <div class="contact__form-field">
               <label class="contact__form-label" for="name">Name</label>
               <input
@@ -395,16 +389,33 @@
           </div>
         </div>
 
-        <!-- If you give me some credit or shoutout here by linking to my website, then it will be a big thing for me and will help me a lot :) -->
-        <div class="main-footer__lower">
-          &copy; Copyright 2021. Made by
-          <a rel="noreferrer" target="_blank" href="https://rammaheshwari.com"
-            >Ram Maheshwari</a
-          >
+        
         </div>
       </div>
     </footer>
 
     <script src="./index.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        Email.send({
+          SecureToken: "YOUR_SECURE_TOKEN", // Replace with your actual SecureToken
+          To: 'jasonharris005@gmail.com',
+          From: email,
+          Subject: `New contact form submission from ${name}`,
+          Body: `Name: ${name} <br/> Email: ${email} <br/> Message: ${message}`
+        }).then(
+          message => alert("Message sent successfully!")
+        ).catch(
+          error => alert("Failed to send message. Please try again later.")
+        );
+      }
+    </script>
   </body>
 </html>
