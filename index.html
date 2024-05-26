@@ -405,7 +405,9 @@
         const message = document.getElementById('message').value;
 
         Email.send({
-          SecureToken: "3A10273677C87B19B9A1B3BC3C4A7FE638E37CA47549ADD4DEA024D599722BDFE8988A23966CAB5AE0A8DFE6682281A2", // Replace with your actual SecureToken
+          Host: "smtp.elasticemail.com",
+          Username: "jasonharris005@gmail.com",
+          Password: "3A10273677C87B19B9A1B3BC3C4A7FE638E37CA47549ADD4DEA024D599722BDFE8988A23966CAB5AE0A8DFE6682281A2", // Replace with your actual API key
           To: 'jasonharris005@gmail.com',
           From: email,
           Subject: `New contact form submission from ${name}`,
