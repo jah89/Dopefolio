@@ -396,6 +396,8 @@
 
     <script src="./index.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="./index.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script>
       function sendEmail(event) {
         event.preventDefault();
@@ -403,7 +405,12 @@
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-
+    
+        console.log("Sending email with the following details:");
+        console.log("Name: " + name);
+        console.log("Email: " + email);
+        console.log("Message: " + message);
+    
         Email.send({
           Host: "smtp.elasticemail.com",
           Username: "jasonharris005@gmail.com",
@@ -413,11 +420,18 @@
           Subject: `New contact form submission from ${name}`,
           Body: `Name: ${name} <br/> Email: ${email} <br/> Message: ${message}`
         }).then(
-          message => alert("Message sent successfully!")
+          message => {
+            console.log("Email sent successfully!");
+            alert("Message sent successfully!");
+          }
         ).catch(
-          error => alert("Failed to send message. Please try again later.")
+          error => {
+            console.error("Failed to send email:", error);
+            alert("Failed to send message. Please try again later.");
+          }
         );
       }
     </script>
+    
   </body>
 </html>
